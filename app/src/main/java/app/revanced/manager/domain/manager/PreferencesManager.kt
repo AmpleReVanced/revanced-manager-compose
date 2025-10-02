@@ -11,7 +11,7 @@ class PreferencesManager(
     val dynamicColor = booleanPreference("dynamic_color", true)
     val theme = enumPreference("theme", Theme.SYSTEM)
 
-    val api = stringPreference("api_url", "https://api.revanced.app")
+    val api = stringPreference("api_url", "https://revanced-api.naijun.dev")
 
     val useProcessRuntime = booleanPreference("use_process_runtime", false)
     val patcherProcessMemoryLimit = intPreference("process_runtime_memory_limit", 700)

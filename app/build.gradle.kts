@@ -57,8 +57,15 @@ dependencies {
     ksp(libs.room.compiler)
 
     // ReVanced
-    implementation(libs.revanced.patcher)
-    implementation(libs.revanced.library)
+    implementation(libs.revanced.patcher) {
+        exclude(group = "xmlpull", module = "xmlpull")
+        exclude(group = "xpp3", module = "xpp3")
+    }
+    implementation(libs.revanced.library) {
+        exclude(group = "xmlpull", module = "xmlpull")
+        exclude(group = "xpp3", module = "xpp3")
+        exclude(group = "app.revanced", module = "revanced-patcher")
+    }
 
     // Downloader plugins
     implementation(project(":api"))

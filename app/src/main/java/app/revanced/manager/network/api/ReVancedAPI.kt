@@ -23,7 +23,7 @@ class ReVancedAPI(
             Dispatchers.IO
         ) {
             client.request {
-                url("$api/v4/$route")
+                url("$api/v1/$route")
             }
         }
 

@@ -37,7 +37,7 @@ class Session(
             apkFile = input,
             temporaryFilesPath = tempDir,
             frameworkFileDirectory = frameworkDir,
-            aaptBinaryPath = aaptPath
+//            aaptBinaryPath = aaptPath
         )
     )
 
