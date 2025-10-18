@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="patch_count">
+        <item quantity="one">%d 패치</item>
+        <item quantity="other">%d 패치</item>
+    </plurals>
+    <plurals name="patches_executed">
+        <item quantity="one">%d 패치 실행됨</item>
+        <item quantity="other">%d 패치 실행됨</item>
+    </plurals>
+    <plurals name="selected_count">
+        <item quantity="other">%d 선택됨</item>
+    </plurals>
+</resources>
