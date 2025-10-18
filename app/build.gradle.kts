@@ -75,6 +75,7 @@ dependencies {
 
     // HiddenAPI
     compileOnly(libs.hidden.api.stub)
+    implementation(libs.hiddenapibypass)
 
     // LibSU
     implementation(libs.libsu.core)

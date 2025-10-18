@@ -17,7 +17,7 @@ serialization = "1.8.0"
 collection = "0.3.8"
 datetime = "0.6.1"
 room-version = "2.7.1"
-revanced-patcher = "21.0.1"
+revanced-patcher = "21.0.2"
 revanced-library = "3.0.2"
 koin = "3.5.3"
 ktor = "2.3.9"
@@ -37,6 +37,7 @@ kotlin-process = "1.5.1"
 hidden-api-stub = "4.3.3"
 binary-compatibility-validator = "0.17.0"
 semver-parser = "3.0.0"
+hiddenapibypass = "6.1"
 
 [libraries]
 # AndroidX Core
@@ -132,6 +133,9 @@ compose-icons-fontawesome = { group = "com.github.BenjaminHalko.compose-icons", 
 
 # Semantic versioning parser
 semver-parser = { module = "io.github.z4kn4fein:semver", version.ref = "semver-parser" }
+
+# Hidden API Bypass
+hiddenapibypass = { group = "org.lsposed.hiddenapibypass", name = "hiddenapibypass", version.ref = "hiddenapibypass" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }

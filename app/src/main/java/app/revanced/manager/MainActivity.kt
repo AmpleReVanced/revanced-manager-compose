@@ -61,12 +61,15 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import org.koin.androidx.compose.navigation.koinNavViewModel
 import org.koin.core.parameter.parametersOf
+import org.lsposed.hiddenapibypass.HiddenApiBypass
 import org.koin.androidx.viewmodel.ext.android.getViewModel as getActivityViewModel
 
 class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        HiddenApiBypass.setHiddenApiExemptions("")
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge()
