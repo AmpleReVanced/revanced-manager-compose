@@ -102,6 +102,8 @@
     <string name="universal_patches_safeguard">범용 패치 사용 허용</string>
     <string name="universal_patches_safeguard_description">범용 패치 사용을 방지하지 않습니다.</string>
     <string name="universal_patches_safeguard_confirmation">범용 패치는 특정 앱을 대상으로 하는 패치만큼 철저하게 테스트되지 않습니다.\n\n활성화하시겠습니까?</string>
+    <string name="allow_download_on_metered_network">데이터 네트워크에서 다운로드 허용</string>
+    <string name="allow_download_on_metered_network_description">데이터 네트워크(모바일 데이터)에 연결된 상태에서 패치 및 업데이트 다운로드를 허용합니다.</string>
     <string name="import_keystore">키스토어 가져오기</string>
     <string name="import_keystore_description">사용자 정의 키스토어를 가져옵니다.</string>
     <string name="import_keystore_dialog_title">키스토어 자격 증명 입력</string>

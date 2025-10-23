@@ -142,6 +142,14 @@ fun AdvancedSettingsScreen(
                 confirmationText = R.string.universal_patches_safeguard_confirmation
             )
 
+            GroupHeader(stringResource(R.string.downloads))
+            BooleanItem(
+                preference = viewModel.prefs.allowDownloadOnMeteredNetwork,
+                coroutineScope = viewModel.viewModelScope,
+                headline = R.string.allow_download_on_metered_network,
+                description = R.string.allow_download_on_metered_network_description,
+            )
+
             GroupHeader(stringResource(R.string.patcher))
             BooleanItem(
                 preference = viewModel.prefs.useProcessRuntime,

@@ -27,6 +27,7 @@ class PreferencesManager(
     val disableSelectionWarning = booleanPreference("disable_selection_warning", false)
     val disableUniversalPatchCheck = booleanPreference("disable_patch_universal_check", false)
     val suggestedVersionSafeguard = booleanPreference("suggested_version_safeguard", true)
+    val allowDownloadOnMeteredNetwork = booleanPreference("allow_download_on_metered_network", false)
 
     val acknowledgedDownloaderPlugins = stringSetPreference("acknowledged_downloader_plugins", emptySet())
 
