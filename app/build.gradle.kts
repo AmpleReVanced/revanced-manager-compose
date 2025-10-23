@@ -134,7 +134,7 @@ android {
     buildToolsVersion = "35.0.1"
 
     defaultConfig {
-        applicationId = "app.revanced.manager"
+        applicationId = "app.revanced.manager.naijun"
         minSdk = 26
         targetSdk = 35
 
