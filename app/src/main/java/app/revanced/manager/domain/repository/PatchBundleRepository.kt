@@ -267,7 +267,7 @@ class PatchBundleRepository(
     suspend fun reset() = dispatchAction("Reset") { state ->
         dao.reset()
         state.sources.keys.forEach { directoryOf(it).deleteRecursively() }
-        doReload()
+        return@dispatchAction doReload()
     }
 
     suspend fun remove(vararg bundles: PatchBundleSource) =
@@ -301,7 +301,7 @@ class PatchBundleRepository(
             }
         }
 
-        doReload()
+        return@dispatchAction doReload()
     }
 
     suspend fun createRemote(url: String, autoUpdate: Boolean) =
@@ -317,7 +317,7 @@ class PatchBundleRepository(
             updateDb(it.uid) { it.copy(versionHash = null) }
         }
 
-        doReload()
+        return@dispatchAction doReload()
     }
 
     suspend fun RemotePatchBundle.setAutoUpdate(value: Boolean) =
@@ -364,12 +364,16 @@ class PatchBundleRepository(
                 .filter { predicate(it) }
                 .map {
                     async {
-                        Log.d(tag, "Updating patch bundle: ${it.name}")
+                        Log.d(tag, "Checking update for patch bundle: ${it.name} (uid=${it.uid}, current versionHash=${it.versionHash})")
 
                         val newVersion = with(it) {
                             if (force) downloadLatest() else update()
-                        } ?: return@async null
+                        } ?: run {
+                            Log.d(tag, "No update available for ${it.name}")
+                            return@async null
+                        }
 
+                        Log.d(tag, "Downloaded new version for ${it.name}: $newVersion")
                         it to newVersion
                     }
                 }
@@ -384,12 +388,14 @@ class PatchBundleRepository(
             updated.forEach { (src, newVersionHash) ->
                 val name = src.patchBundle?.manifestAttributes?.name ?: src.name
 
+                Log.d(tag, "Updating DB for bundle ${src.name} (uid=${src.uid}): $newVersionHash")
                 updateDb(src.uid) {
                     it.copy(versionHash = newVersionHash, name = name)
                 }
             }
 
             if (showToast) toast(R.string.patches_update_success)
+            // Return the reloaded state to ensure the updated versionHash is reflected in memory
             doReload()
         }
 

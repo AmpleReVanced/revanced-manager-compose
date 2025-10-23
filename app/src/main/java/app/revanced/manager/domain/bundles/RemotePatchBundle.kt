@@ -15,7 +15,7 @@ import java.io.File
 sealed class RemotePatchBundle(
     name: String,
     uid: Int,
-    protected val versionHash: String?,
+    val versionHash: String?,
     error: Throwable?,
     directory: File,
     val endpoint: String,
@@ -44,9 +44,19 @@ sealed class RemotePatchBundle(
 
     suspend fun ActionContext.update(): String? = withContext(Dispatchers.IO) {
         val info = getLatestInfo()
-        if (hasInstalled() && info.version == versionHash)
+        // Always check for updates: if no version is installed OR if the versions are different
+        // This ensures that version updates like 5.1.5-ample.1 -> 5.1.5-ample.2 are properly detected
+        
+        android.util.Log.d("RemotePatchBundle", "Checking update for $name: current=$versionHash, latest=${info.version}")
+        
+        if (hasInstalled() && info.version == versionHash) {
+            // Version is already up to date, no need to download
+            android.util.Log.d("RemotePatchBundle", "Bundle $name is already up to date")
             return@withContext null
+        }
 
+        // Download the new version
+        android.util.Log.d("RemotePatchBundle", "Downloading new version for $name: ${info.version}")
         download(info)
     }
 
