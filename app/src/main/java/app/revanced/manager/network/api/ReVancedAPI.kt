@@ -1,6 +1,7 @@
 package app.revanced.manager.network.api
 
 import android.os.Build
+import app.revanced.manager.BuildConfig
 import app.revanced.manager.domain.manager.PreferencesManager
 import app.revanced.manager.network.dto.ReVancedAsset
 import app.revanced.manager.network.dto.ReVancedGitRepository
@@ -30,7 +31,7 @@ class ReVancedAPI(
     private suspend inline fun <reified T> request(route: String) = request<T>(apiUrl(), route)
 
     suspend fun getAppUpdate() =
-        getLatestAppInfo().getOrThrow().takeIf { it.version != Build.VERSION.RELEASE }
+        getLatestAppInfo().getOrThrow().takeIf { it.version != "v" + BuildConfig.VERSION_NAME }
 
     suspend fun getLatestAppInfo() = request<ReVancedAsset>("manager")
 
